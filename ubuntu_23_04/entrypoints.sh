@@ -1,19 +1,17 @@
 #!/bin/sh
 # https://doc.qt.io/qt-6/linux.html
-# https://pkgs.org/search
 
-yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-
-# enable CRB repo
-dnf config-manager --set-enabled crb
-dnf --enablerepo=crb install -y ninja-build
-
-yum install -y wget cmake git
-yum install -y qt6-qtbase-devel
-yum install -y mesa-libGL-devel
-yum install -y python3-devel
-yum install -y boost-test boost-filesystem boost-devel
-yum install -y eigen3-devel
+apt-get -y update && apt-get -y upgrade
+apt-get install -y wget cmake build-essential
+apt-get install -y git ninja-build
+apt-get install -y qt6-base-dev
+apt-get install -y qt6-base-dev-tools
+apt-get install -y qt6-tools-dev
+apt-get install -y libqt6opengl6-dev
+apt-get install -y libgl1-mesa-dev
+apt-get install -y python3-dev
+apt-get install -y libboost-test-dev libboost-filesystem-dev
+apt-get install -y libeigen3-dev
 
 git clone https://github.com/asicsforthemasses/LunaPnR.git lunapnr
 ls -al
@@ -42,5 +40,3 @@ python3 --version >/artifacts/python_version.txt
 
 cd /
 tar -czf lunapnr.tgz artifacts
-
-bash
