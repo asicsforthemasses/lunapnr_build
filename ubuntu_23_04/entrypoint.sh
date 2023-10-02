@@ -35,6 +35,8 @@ cp ./build/gui/lunapnr /artifacts/
 cp core_test.rpt /artifacts/
 
 gcc --version >/artifacts/gcc_version.txt
+cmake --version >/artifacts/cmake_version.txt
+python3 --version >/artifacts/python_version.txt
 
 cd /
 tar -czf lunapnr.tgz artifacts
