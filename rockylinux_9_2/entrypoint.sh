@@ -42,5 +42,3 @@ python3 --version >/artifacts/python_version.txt
 
 cd /
 tar -czf lunapnr.tgz artifacts
-
-bash
