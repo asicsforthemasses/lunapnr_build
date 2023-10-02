@@ -1,17 +1,14 @@
 #!/bin/sh
 # https://doc.qt.io/qt-6/linux.html
+# https://pkgs.org/search
 
-apt-get -y update && apt-get -y upgrade
-apt-get install -y wget cmake build-essential
-apt-get install -y git ninja-build
-apt-get install -y qt6-base-dev
-apt-get install -y qt6-base-dev-tools
-apt-get install -y qt6-tools-dev
-apt-get install -y libqt6opengl6-dev
-apt-get install -y libgl1-mesa-dev
-apt-get install -y python3-dev
-apt-get install -y libboost-test-dev libboost-filesystem-dev
-apt-get install -y libeigen3-dev
+dnf install -y cmake gcc-c++ ninja-build wget boost-devel git
+#yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+
+yum install -y qt6-qtbase-devel
+yum install -y mesa-libGL-devel
+yum install -y python3-devel
+yum install -y eigen3-devel
 
 git clone https://github.com/asicsforthemasses/LunaPnR.git lunapnr
 ls -al
@@ -24,7 +21,8 @@ cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DUseCPPCHECK=OFF ..
 ninja
 cd ..
 
-./generate_deb.sh
+ls -al ./build/test
+ls -al ./build/gui
 
 mkdir /artifacts
 cp ./build/test/core/core_test /artifacts/
